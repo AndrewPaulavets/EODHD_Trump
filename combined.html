@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EODHD Trump Trade Analysis - All Visualizations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding-top: 70px; /* Space for the fixed header */
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-title {
+            margin: 0;
+            font-size: 20px;
+            white-space: nowrap;
+        }
+        .nav-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+        .nav-links a:hover {
+            background-color: #3498db;
+        }
+        .section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .section-header h2 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        .back-to-top i {
+            font-size: 20px;
+        }
+        .visualization-type {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #e0e6ed;
+            border-radius: 4px;
+            margin-left: 10px;
+            font-size: 0.8em;
+            color: #34495e;
+        }
+        .section-content {
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            .nav-menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                width: 100%;
+                padding: 10px 0;
+                flex-direction: column;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .section {
+                margin: 20px 10px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="nav-header">
+        <div class="nav-container">
+            <h1 class="nav-title"><i class="fas fa-chart-line"></i> EODHD Trump Trade Analysis</h1>
+            <button class="nav-menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="#bar-exports"><i class="fas fa-chart-bar"></i> Bar Exports</a>
+                <a href="#bar-imports"><i class="fas fa-chart-bar"></i> Bar Imports</a>
+                <a href="#bar-trade-balance"><i class="fas fa-chart-bar"></i> Bar Trade Balance</a>
+                <a href="#line-exports"><i class="fas fa-chart-line"></i> Line Exports</a>
+                <a href="#line-imports"><i class="fas fa-chart-line"></i> Line Imports</a>
+                <a href="#line-trade-balance"><i class="fas fa-chart-line"></i> Line Trade Balance</a>
+                <a href="#map-tariffs"><i class="fas fa-map-marked-alt"></i> Map Tariffs</a>
+                <a href="#scatter-trade-tariff"><i class="fas fa-braille"></i> Scatter Trade/Tariff</a>
+                <a href="#tariffs-list"><i class="fas fa-table"></i> Tariffs List</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bar Charts Section -->
+    <div id="bar-exports" class="section">
+        <div class="section-header">
+            <h2>Exports (Historical)</h2>
+            <span class="visualization-type"><i class="fas fa-chart-bar"></i> Bar Chart</span>
+        </div>
+        <div class="section-content">
+            <iframe src="bar_Exports_historical.html" title="Exports Historical Bar Chart"></iframe>
+        </div>
+    </div>
+
+    <div id="bar-imports" class="section">
+        <div class="section-header">
+            <h2>Imports (Historical)</h2>
+            <span class="visualization-type"><i class="fas fa-chart-bar"></i> Bar Chart</span>
+        </div>
+        <div class="section-content">
+            <iframe src="bar_Imports_historical.html" title="Imports Historical Bar Chart"></iframe>
+        </div>
+    </div>
+
+    <div id="bar-trade-balance" class="section">
+        <div class="section-header">
+            <h2>Trade Balance (Historical)</h2>
+            <span class="visualization-type"><i class="fas fa-chart-bar"></i> Bar Chart</span>
+        </div>
+        <div class="section-content">
+            <iframe src="bar_Trade Balance_historical.html" title="Trade Balance Historical Bar Chart"></iframe>
+        </div>
+    </div>
+
+    <!-- Line Charts Section -->
+    <div id="line-exports" class="section">
+        <div class="section-header">
+            <h2>Exports (Historical)</h2>
+            <span class="visualization-type"><i class="fas fa-chart-line"></i> Line Chart</span>
+        </div>
+        <div class="section-content">
+            <iframe src="line_Exports_historical.html" title="Exports Historical Line Chart"></iframe>
+        </div>
+    </div>
+
+    <div id="line-imports" class="section">
+        <div class="section-header">
+            <h2>Imports (Historical)</h2>
+            <span class="visualization-type"><i class="fas fa-chart-line"></i> Line Chart</span>
+        </div>
+        <div class="section-content">
+            <iframe src="line_Imports_historical.html" title="Imports Historical Line Chart"></iframe>
+        </div>
+    </div>
+
+    <div id="line-trade-balance" class="section">
+        <div class="section-header">
+            <h2>Trade Balance (Historical)</h2>
+            <span class="visualization-type"><i class="fas fa-chart-line"></i> Line Chart</span>
+        </div>
+        <div class="section-content">
+            <iframe src="line_Trade Balance_historical.html" title="Trade Balance Historical Line Chart"></iframe>
+        </div>
+    </div>
+
+    <!-- Tariff Analysis Section -->
+    <div id="map-tariffs" class="section">
+        <div class="section-header">
+            <h2>Tariffs by Country</h2>
+            <span class="visualization-type"><i class="fas fa-map-marked-alt"></i> Map</span>
+        </div>
+        <div class="section-content">
+            <iframe src="map_tariffs.html" title="Tariffs Map"></iframe>
+        </div>
+    </div>
+
+    <div id="scatter-trade-tariff" class="section">
+        <div class="section-header">
+            <h2>Trade Balance vs Tariffs</h2>
+            <span class="visualization-type"><i class="fas fa-braille"></i> Scatter Plot</span>
+        </div>
+        <div class="section-content">
+            <iframe src="scatter_trade_balance_tariff_historical.html" title="Trade Balance vs Tariffs Scatter Plot"></iframe>
+        </div>
+    </div>
+
+    <div id="tariffs-list" class="section">
+        <div class="section-header">
+            <h2>Tariffs List</h2>
+            <span class="visualization-type"><i class="fas fa-table"></i> Table</span>
+        </div>
+        <div class="section-content">
+            <iframe src="tariffs_list.html" title="Tariffs List"></iframe>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Toggle mobile menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close the mobile menu if it's open
+                document.getElementById('navLinks').classList.remove('show');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70, // Adjust for header height
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
