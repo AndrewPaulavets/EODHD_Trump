@@ -47,19 +47,23 @@
         }
         .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         .nav-links a {
             color: white;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 3px 6px;
             border-radius: 3px;
             transition: background-color 0.3s;
-            font-size: 14px;
+            font-size: 12px;
         }
         .nav-links a:hover {
             background-color: #3498db;
+        }
+        .nav-links a i {
+            margin-right: 3px;
+            font-size: 10px;
         }
         .section {
             max-width: 1200px;
@@ -129,11 +133,53 @@
         }
         .nav-section {
             color: #e0e6ed;
-            font-size: 12px;
+            font-size: 10px;
             font-weight: bold;
-            padding: 5px;
-            margin-right: 10px;
+            padding: 3px;
+            margin-right: 5px;
             text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #34495e;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            margin-top: 3px;
+        }
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 12px;
+        }
+        .dropdown-content a:hover {
+            background-color: #3498db;
+        }
+        .dropdown-btn {
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 3px 6px;
+            font-size: 12px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-btn:hover {
+            background-color: #3498db;
         }
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -168,28 +214,40 @@
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="nav-links" id="navLinks">
-                <span class="nav-section">Trade Analysis</span>
-                <a href="#bar-exports"><i class="fas fa-chart-bar"></i> Bar Exports</a>
-                <a href="#bar-imports"><i class="fas fa-chart-bar"></i> Bar Imports</a>
-                <a href="#bar-trade-balance"><i class="fas fa-chart-bar"></i> Bar Trade Balance</a>
-                <a href="#line-exports"><i class="fas fa-chart-line"></i> Line Exports</a>
-                <a href="#line-imports"><i class="fas fa-chart-line"></i> Line Imports</a>
-                <a href="#line-trade-balance"><i class="fas fa-chart-line"></i> Line Trade Balance</a>
-                <a href="#map-tariffs"><i class="fas fa-map-marked-alt"></i> Map Tariffs</a>
-                <a href="#scatter-trade-tariff"><i class="fas fa-braille"></i> Scatter Trade/Tariff</a>
-                <a href="#tariffs-list"><i class="fas fa-table"></i> Tariffs List</a>
+                <div class="nav-dropdown">
+                    <button class="dropdown-btn"><i class="fas fa-exchange-alt"></i> Trade <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#bar-exports"><i class="fas fa-chart-bar"></i> Bar Exports</a>
+                        <a href="#bar-imports"><i class="fas fa-chart-bar"></i> Bar Imports</a>
+                        <a href="#bar-trade-balance"><i class="fas fa-chart-bar"></i> Bar Balance</a>
+                        <a href="#line-exports"><i class="fas fa-chart-line"></i> Line Exports</a>
+                        <a href="#line-imports"><i class="fas fa-chart-line"></i> Line Imports</a>
+                        <a href="#line-trade-balance"><i class="fas fa-chart-line"></i> Line Balance</a>
+                        <a href="#map-tariffs"><i class="fas fa-map-marked-alt"></i> Map Tariffs</a>
+                        <a href="#scatter-trade-tariff"><i class="fas fa-braille"></i> Scatter Trade/Tariff</a>
+                        <a href="#tariffs-list"><i class="fas fa-table"></i> Tariffs List</a>
+                    </div>
+                </div>
                 
-                <span class="nav-section">Market Impact</span>
-                <a href="#sp500-performance"><i class="fas fa-chart-line"></i> S&P 500</a>
-                <a href="#heatmap-cumulative"><i class="fas fa-th"></i> Heatmap Cumulative</a>
-                <a href="#heatmap-first-day"><i class="fas fa-th"></i> Heatmap First Day</a>
+                <div class="nav-dropdown">
+                    <button class="dropdown-btn"><i class="fas fa-chart-pie"></i> Market <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#sp500-performance"><i class="fas fa-chart-line"></i> S&P 500</a>
+                        <a href="#heatmap-cumulative"><i class="fas fa-th"></i> Heatmap Cumulative</a>
+                        <a href="#heatmap-first-day"><i class="fas fa-th"></i> Heatmap First Day</a>
+                    </div>
+                </div>
                 
-                <span class="nav-section">Detailed Market Analysis</span>
-                <a href="#vix-candle-charts"><i class="fas fa-chart-line"></i> VIX Candle Charts</a>
-                <a href="#sp500-candle-charts"><i class="fas fa-chart-line"></i> S&P 500 Candle Charts</a>
-                <a href="#histograms"><i class="fas fa-chart-bar"></i> Histograms</a>
-                <a href="#line-bar-charts"><i class="fas fa-chart-line"></i> Line/Bar Charts</a>
-                <a href="#vix-sp-yoy"><i class="fas fa-chart-line"></i> VIX/S&P YoY</a>
+                <div class="nav-dropdown">
+                    <button class="dropdown-btn"><i class="fas fa-chart-line"></i> Details <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#vix-candle-charts"><i class="fas fa-chart-line"></i> VIX Candles</a>
+                        <a href="#sp500-candle-charts"><i class="fas fa-chart-line"></i> S&P 500 Candles</a>
+                        <a href="#histograms"><i class="fas fa-chart-bar"></i> Histograms</a>
+                        <a href="#line-bar-charts"><i class="fas fa-chart-line"></i> Last 100 Days</a>
+                        <a href="#vix-sp-yoy"><i class="fas fa-chart-line"></i> YoY Comparison</a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -423,6 +481,24 @@
                 });
             });
         });
+
+        // Mobile dropdown menus
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.dropdown-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                    } else {
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                            dropdown.style.display = 'none';
+                        });
+                        content.style.display = 'block';
+                    }
+                });
+            });
+        }
 
         // Back to top button
         const backToTopButton = document.getElementById('backToTop');
