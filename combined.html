@@ -127,6 +127,14 @@
             border-radius: 4px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        .nav-section {
+            color: #e0e6ed;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .nav-container {
@@ -160,6 +168,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <nav class="nav-links" id="navLinks">
+                <span class="nav-section">Trade Analysis</span>
                 <a href="#bar-exports"><i class="fas fa-chart-bar"></i> Bar Exports</a>
                 <a href="#bar-imports"><i class="fas fa-chart-bar"></i> Bar Imports</a>
                 <a href="#bar-trade-balance"><i class="fas fa-chart-bar"></i> Bar Trade Balance</a>
@@ -169,9 +178,18 @@
                 <a href="#map-tariffs"><i class="fas fa-map-marked-alt"></i> Map Tariffs</a>
                 <a href="#scatter-trade-tariff"><i class="fas fa-braille"></i> Scatter Trade/Tariff</a>
                 <a href="#tariffs-list"><i class="fas fa-table"></i> Tariffs List</a>
+                
+                <span class="nav-section">Market Impact</span>
                 <a href="#sp500-performance"><i class="fas fa-chart-line"></i> S&P 500</a>
                 <a href="#heatmap-cumulative"><i class="fas fa-th"></i> Heatmap Cumulative</a>
                 <a href="#heatmap-first-day"><i class="fas fa-th"></i> Heatmap First Day</a>
+                
+                <span class="nav-section">Detailed Market Analysis</span>
+                <a href="#vix-candle-charts"><i class="fas fa-chart-line"></i> VIX Candle Charts</a>
+                <a href="#sp500-candle-charts"><i class="fas fa-chart-line"></i> S&P 500 Candle Charts</a>
+                <a href="#histograms"><i class="fas fa-chart-bar"></i> Histograms</a>
+                <a href="#line-bar-charts"><i class="fas fa-chart-line"></i> Line/Bar Charts</a>
+                <a href="#vix-sp-yoy"><i class="fas fa-chart-line"></i> VIX/S&P YoY</a>
             </nav>
         </div>
     </header>
@@ -297,6 +315,84 @@
         </div>
         <div class="section-content">
             <iframe src="heatmap_impact_first_day.html" title="First Day Market Reaction"></iframe>
+        </div>
+    </div>
+
+    <!-- NEW SECTIONS -->
+    <!-- VIX Candle Charts Section -->
+    <div id="vix-candle-charts" class="section">
+        <div class="section-header">
+            <h2>VIX Volatility During Trade Events</h2>
+            <span class="visualization-type"><i class="fas fa-chart-line"></i> Candlestick Charts</span>
+        </div>
+        <div class="section-content">
+            <h3>Escalated US-China Tariff War</h3>
+            <iframe src="candle_VIX_Escalated US-China Tariff War.html" title="VIX - Escalated US-China Tariff War"></iframe>
+            
+            <h3>Reciprocal Tariff Act</h3>
+            <iframe src="candle_VIX_Reciprocal Tariff Act.html" title="VIX - Reciprocal Tariff Act"></iframe>
+            
+            <h3>US-China Trade War Tariffs</h3>
+            <iframe src="candle_VIX_US-China Trade War Tariffs.html" title="VIX - US-China Trade War Tariffs"></iframe>
+        </div>
+    </div>
+
+    <!-- S&P 500 Candle Charts Section -->
+    <div id="sp500-candle-charts" class="section">
+        <div class="section-header">
+            <h2>S&P 500 During Trade Events</h2>
+            <span class="visualization-type"><i class="fas fa-chart-line"></i> Candlestick Charts</span>
+        </div>
+        <div class="section-content">
+            <h3>Escalated US-China Tariff War</h3>
+            <iframe src="candle_GSPC_Escalated US-China Tariff War.html" title="S&P 500 - Escalated US-China Tariff War"></iframe>
+            
+            <h3>Reciprocal Tariff Act</h3>
+            <iframe src="candle_GSPC_Reciprocal Tariff Act.html" title="S&P 500 - Reciprocal Tariff Act"></iframe>
+            
+            <h3>US-China Trade War Tariffs</h3>
+            <iframe src="candle_GSPC_US-China Trade War Tariffs.html" title="S&P 500 - US-China Trade War Tariffs"></iframe>
+        </div>
+    </div>
+
+    <!-- Histograms Section -->
+    <div id="histograms" class="section">
+        <div class="section-header">
+            <h2>Daily Change Distribution</h2>
+            <span class="visualization-type"><i class="fas fa-chart-bar"></i> Histograms</span>
+        </div>
+        <div class="section-content">
+            <h3>S&P 500 Daily Change</h3>
+            <iframe src="histo_GSPC_day_change.html" title="S&P 500 Daily Change Histogram"></iframe>
+            
+            <h3>VIX Daily Change</h3>
+            <iframe src="histo_VIX_day_change.html" title="VIX Daily Change Histogram"></iframe>
+        </div>
+    </div>
+
+    <!-- Line/Bar Charts Section -->
+    <div id="line-bar-charts" class="section">
+        <div class="section-header">
+            <h2>Last 100 Days Performance</h2>
+            <span class="visualization-type"><i class="fas fa-chart-line"></i> Line/Bar Charts</span>
+        </div>
+        <div class="section-content">
+            <h3>S&P 500 Last 100 Days</h3>
+            <iframe src="line_bar_GSPC_last_100days.html" title="S&P 500 Last 100 Days"></iframe>
+            
+            <h3>VIX Last 100 Days</h3>
+            <iframe src="line_bar_VIX_last_100days.html" title="VIX Last 100 Days"></iframe>
+        </div>
+    </div>
+
+    <!-- VIX/S&P YoY Chart Section -->
+    <div id="vix-sp-yoy" class="section">
+        <div class="section-header">
+            <h2>VIX and S&P 500 Year-over-Year Comparison</h2>
+            <span class="visualization-type"><i class="fas fa-chart-line"></i> Line Chart</span>
+        </div>
+        <div class="section-content">
+            <iframe src="line_VIX_SP_YoY.html" title="VIX and S&P 500 Year-over-Year Comparison"></iframe>
         </div>
     </div>
 
