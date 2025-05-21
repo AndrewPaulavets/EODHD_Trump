@@ -1,4 +1,4 @@
-# EODHD Trump Trade Analysis Implementation Guide
+# EODHD Trump Trade Analysis
 
 This README contains information on the visualization hub for EODHD Trump Trade Analysis project.
 
